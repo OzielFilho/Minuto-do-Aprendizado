@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:minutodoaprendizado/pages/Inicio_page/inicio_page.dart';
 import 'package:minutodoaprendizado/pages/config_page/config_page.dart';
+import 'package:minutodoaprendizado/pages/midia_page/midia_page.dart';
 
 import 'package:minutodoaprendizado/utils/theme/themes.dart';
 import 'package:minutodoaprendizado/utils/widgets/drawer/draw.dart';
@@ -12,52 +14,66 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  int _currentIndex = 0;
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
+  TabController _tabController;
 
-  final List<Widget> _tabs = [
-    HomePage(),
-    ConfigPage(),
-  ];
+  @override
+  void initState() {
+    super.initState();
+
+    _tabController = TabController(length: 3, vsync: this, initialIndex: 0);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _tabController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomSheet: TabBar(
+        controller: _tabController,
+        tabs: <Widget>[
+          Tab(
+            icon: Icon(FlutterIcons.home_mdi, color: colorPrimary),
+            //text: 'Inicio',
+            child: Text(
+              'inicio',
+              style: style1,
+            ),
+          ),
+          Tab(
+            icon: Icon(FlutterIcons.photo_album_mdi, color: colorPrimary),
+            //text: 'Inicio',
+            child: Text(
+              'Midia',
+              style: style1,
+            ),
+          ),
+          Tab(
+            icon: Icon(FlutterIcons.chat_mco, color: colorPrimary),
+            //text: 'Inicio',
+            child: Text(
+              'Chat',
+              style: style1,
+            ),
+          ),
+        ],
+      ),
       appBar: AppBar(
         title: null,
         backgroundColor: colorPrimary,
       ),
       drawer: Draw(),
-      body: _tabs[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: colorPrimary,
-        elevation: 0.0,
-        selectedItemColor: Colors.white,
-        selectedLabelStyle: style1,
-        unselectedItemColor: Color(0xFF757575),
-        unselectedLabelStyle: style1,
-        showUnselectedLabels: true,
-        type: BottomNavigationBarType.fixed,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        currentIndex: _currentIndex,
-        iconSize: 25.0,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(FlutterIcons.home_mdi),
-            label: 'Página inicial',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(FlutterIcons.search_mdi),
-            label: 'Buscar',
-          ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(FlutterIcons.library_music_outline_mco),
-          //   label: 'Biblioteca',
-          // ),
+      body: TabBarView(
+        controller: _tabController,
+        children: <Widget>[
+          InicioPage(),
+          ConfigPage(),
+          MidiaPage(),
         ],
       ),
     );
