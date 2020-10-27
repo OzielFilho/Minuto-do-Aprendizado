@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:minutodoaprendizado/pages/Inicio_page/inicio_page.dart';
 import 'package:minutodoaprendizado/pages/config_page/config_page.dart';
-import 'package:minutodoaprendizado/pages/midia_page/midia_page.dart';
+import 'package:minutodoaprendizado/pages/media_page/media_page.dart';
+
 
 import 'package:minutodoaprendizado/utils/theme/themes.dart';
 import 'package:minutodoaprendizado/utils/widgets/drawer/draw.dart';
@@ -69,11 +70,13 @@ class _HomePageState extends State<HomePage>
       ),
       drawer: Draw(),
       body: TabBarView(
+        
         controller: _tabController,
         children: <Widget>[
           InicioPage(),
+          MediaPage(),
           ConfigPage(),
-          MidiaPage(),
+          
         ],
       ),
     );
