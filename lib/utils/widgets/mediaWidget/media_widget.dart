@@ -10,25 +10,23 @@ class MediaWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Container(
-        height: 469,
-        width: 100,
-        child: Column(
-          children: [
-            Card(
-              child: Image.asset(media.imageUrl ?? 'assets/images/logo.png',fit: BoxFit.contain,),
-              shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(5)),
+      // height:MediaQuery.of(context).size.height,
+      width: 100,
+      child: Column(
+        children: [
+          Card(
+            child: Image.asset(
+              media.imageUrl ?? 'assets/images/logo.png',
+              fit: BoxFit.contain,
             ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(media.title ?? 'Titulo'),
-            SizedBox(
-              height: 10,
-            ),
-            Text(media.description ?? 'Descrição')
-          ],
-        ),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(media.title ?? 'Titulo'),
+        ],
       ),
     );
   }

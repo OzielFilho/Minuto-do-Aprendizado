@@ -10,15 +10,24 @@ class MediaPage extends StatefulWidget {
 class _MediaPageState extends State<MediaPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: ListView.builder(
-          itemCount: mediaList.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: EdgeInsets.all(20.0),
-              child: MediaWidget(media: mediaList[index])
-            );
-          }),
+    return ListView(
+      children: [
+        GridView.builder(
+            padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 0.5,
+              childAspectRatio: 0.5,
+            ),
+            itemCount: mediaList.length,
+            itemBuilder: (context, index) {
+              return MediaWidget(media: mediaList[index]);
+            },),
+      ],
     );
   }
 }

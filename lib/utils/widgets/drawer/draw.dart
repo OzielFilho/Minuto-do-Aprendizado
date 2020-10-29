@@ -1,94 +1,105 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:get_it/get_it.dart';
+import 'package:minutodoaprendizado/core/view_model/user_view_model/user_view_model.dart';
 
 import 'package:minutodoaprendizado/utils/theme/themes.dart';
 import 'package:minutodoaprendizado/utils/widgets/flatButton/FlatButtonModify.dart';
 
-class Draw extends StatelessWidget {
+class Draw extends StatefulWidget {
+  @override
+  _DrawState createState() => _DrawState();
+}
+
+class _DrawState extends State<Draw> {
   String urlImage =
       'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/1200px-User_font_awesome.svg.png';
+
+  var _userViewModel = GetIt.I.get<UserViewModel>();
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Container(
-        color: colorPrimary,
-        child: ListView(
-          children: <Widget>[
-            Container(
-              height: 230,
-              width: double.infinity,
-              color: Colors.white,
-              child: Padding(
-                padding: const EdgeInsets.all(21.0),
-                child: Row(
-                  children: <Widget>[
-                    Material(
-                      elevation: 4.0,
-                      shape: CircleBorder(),
-                      clipBehavior: Clip.hardEdge,
-                      color: Colors.transparent,
-                      child: Ink.image(
-                        padding: const EdgeInsets.all(15.0),
-                        image: urlImage != null ? NetworkImage(urlImage) : null,
-                        fit: BoxFit.cover,
-                        width: 90.0,
-                        height: 90.0,
-                        child: InkWell(
-                          onTap: () {},
+      child: Observer(
+        builder: (_) {
+          return Container(
+            color: colorPrimary,
+            child: ListView(
+              children: <Widget>[
+                Container(
+                  height: 230,
+                  width: double.infinity,
+                  color: Colors.white,
+                  child: Padding(
+                    padding: const EdgeInsets.all(21.0),
+                    child: Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 15.0),
+                          child: Container(
+                            height: 80.0,
+                            width: 80.0,
+                            child: CircleAvatar(
+                                backgroundColor: Colors.transparent,
+                                backgroundImage: urlImage != null
+                                    ? NetworkImage(urlImage, scale: 2)
+                                    : Container()),
+                          ),
                         ),
-                      ),
+                        SizedBox(
+                          width: 30,
+                        ),
+                        Text(
+                          _userViewModel?.name ?? 'Carregando',
+                          style: style1,
+                        ),
+                      ],
                     ),
-                    SizedBox(
-                      width: 30,
-                    ),
-                    Text(
-                      'Nome',
-                      style: style1,
-                    ),
-                  ],
+                  ),
                 ),
-              ),
+                Container(
+                  padding: EdgeInsets.all(10.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      FlatButtonModify(
+                        title: 'Início',
+                        onTap: () {},
+                      ),
+                      FlatButtonModify(
+                        title: 'Conta',
+                        onTap: () {},
+                      ),
+                      FlatButtonModify(
+                        title: 'Home',
+                        onTap: () {},
+                      ),
+                      FlatButtonModify(
+                        title: 'Home',
+                        onTap: () {},
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  height: 230,
+                  width: double.infinity,
+                  padding: EdgeInsets.all(10.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      FlatButtonModify(
+                        title: 'Sair',
+                        onTap: () {},
+                      ),
+                    ],
+                  ),
+                )
+              ],
             ),
-            Container(
-              padding: EdgeInsets.all(10.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  FlatButtonModify(
-                    title: 'Início',
-                    onTap: () {},
-                  ),
-                  FlatButtonModify(
-                    title: 'Conta',
-                    onTap: () {},
-                  ),
-                  FlatButtonModify(
-                    title: 'Home',
-                    onTap: () {},
-                  ),
-                  FlatButtonModify(
-                    title: 'Home',
-                    onTap: () {},
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              height: 230,
-              width: double.infinity,
-              padding: EdgeInsets.all(10.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  FlatButtonModify(
-                    title: 'Sair',
-                    onTap: () {},
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
+          );
+        },
       ),
     );
   }

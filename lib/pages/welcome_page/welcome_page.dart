@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:minutodoaprendizado/core/model/slider/slider.dart';
 
 import 'package:minutodoaprendizado/pages/login_page/login_page.dart';
+import 'package:minutodoaprendizado/utils/listUtils/sliderList.dart';
 import 'package:minutodoaprendizado/utils/theme/themes.dart';
 import 'package:minutodoaprendizado/utils/widgets/slidedots/SlideDots.dart';
 import 'package:minutodoaprendizado/utils/widgets/slideitem/SlideItem.dart';

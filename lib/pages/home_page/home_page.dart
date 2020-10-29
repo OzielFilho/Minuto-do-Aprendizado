@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:minutodoaprendizado/pages/Inicio_page/inicio_page.dart';
 import 'package:minutodoaprendizado/pages/chat_page/chat_page.dart';
-import 'package:minutodoaprendizado/pages/config_page/config_page.dart';
+
 import 'package:minutodoaprendizado/pages/media_page/media_page.dart';
 
 

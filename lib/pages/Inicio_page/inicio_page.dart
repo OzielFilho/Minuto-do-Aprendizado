@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:minutodoaprendizado/utils/listUtils/categList.dart';
 import 'package:minutodoaprendizado/utils/theme/themes.dart';
 
 class InicioPage extends StatefulWidget {
@@ -11,44 +12,50 @@ class _InicioPageState extends State<InicioPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        
-        padding: EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Text(
-              'Categorias',
-              style: style1,
-            ),
-            Container(
-              height: 250,
-              
-             
+      body:  Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: ListView(
+            
+            // mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text(
+                'Categorias',
+                style: style1,
+              ),
+              Container(
                 
                 child: ListView.builder(
                   shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 15,
+                  scrollDirection: Axis.vertical,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: categoList.length,
                   itemBuilder: (BuildContext context, int index) => Container(
-                    
                     width: 250,
                     padding: const EdgeInsets.all(8.0),
-                    child: Card(
-                      child: Center(
-                          child: Text(
-                        'Categoria ${index + 1}',
-                        style: style1,
-                      )),
+                    child: GestureDetector(
+                      onTap: () {
+                        print('clicou');
+                      },
+                      child: Card(
+                        shadowColor: Colors.grey,
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              categoList[index],
+                              style: style1,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ),
               ),
-            
-            
-          ],
-        ),
+            ],
+          ),
       ),
+      
       // child: ListView(
       //   children: [
       //     Text('Categorias'),

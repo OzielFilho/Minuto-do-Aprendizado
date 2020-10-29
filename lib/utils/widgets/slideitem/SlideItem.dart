@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:minutodoaprendizado/core/model/slider/slider.dart';
+
+import 'package:minutodoaprendizado/utils/listUtils/sliderList.dart';
 import 'package:minutodoaprendizado/utils/theme/themes.dart';
 
 class SlideItem extends StatelessWidget {
