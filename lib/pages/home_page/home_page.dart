@@ -5,7 +5,6 @@ import 'package:minutodoaprendizado/pages/chat_page/chat_page.dart';
 
 import 'package:minutodoaprendizado/pages/media_page/media_page.dart';
 
-
 import 'package:minutodoaprendizado/utils/theme/themes.dart';
 import 'package:minutodoaprendizado/utils/widgets/drawer/draw.dart';
 
@@ -36,54 +35,52 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomSheet: TabBar(
-        controller: _tabController,
-        indicatorSize: TabBarIndicatorSize.label,
-        indicatorColor: colorPrimary,
-        tabs: <Widget>[
-          Tab(
-            icon: Icon(FlutterIcons.home_mdi, color: colorPrimary),
-            //text: 'Inicio',
-            child: Text(
-              'inicio',
-              style: style1,
+      bottomSheet: Container(
+        height: 60,
+        child: TabBar(
+          controller: _tabController,
+          indicatorSize: TabBarIndicatorSize.label,
+          indicatorColor: colorPrimary,
+          tabs: <Widget>[
+            Tab(
+              icon: Icon(FlutterIcons.home_mdi, color: colorPrimary),
+              child: Text(
+                'inicio',
+                style: style1,
+              ),
             ),
-          ),
-          Tab(
-            icon: Icon(FlutterIcons.photo_album_mdi, color: colorPrimary),
-            //text: 'Inicio',
-            child: Text(
-              'Midia',
-              style: style1,
+            Tab(
+              icon: Icon(FlutterIcons.photo_album_mdi, color: colorPrimary),
+              //text: 'Inicio',
+              child: Text(
+                'Midia',
+                style: style1,
+              ),
             ),
-          ),
-          Tab(
-            icon: Icon(FlutterIcons.chat_mco, color: colorPrimary),
-            //text: 'Inicio',
-            child: Text(
-              'Chat',
-              style: style1,
+            Tab(
+              icon: Icon(FlutterIcons.chat_mco, color: colorPrimary),
+              //text: 'Inicio',
+              child: Text(
+                'Chat',
+                style: style1,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       appBar: AppBar(
         title: null,
         backgroundColor: colorPrimary,
       ),
       drawer: Draw(),
-      body: 
-         TabBarView(
-        
-          controller: _tabController,
-          children: <Widget>[
-            InicioPage(),
-            MediaPage(),
-            ChatPage(),
-            
-          ],
-        ),
-      
+      body: TabBarView(
+        controller: _tabController,
+        children: <Widget>[
+          InicioPage(),
+          MediaPage(),
+          ChatPage(),
+        ],
+      ),
     );
   }
 }

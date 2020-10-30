@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:minutodoaprendizado/core/view_model/user_view_model/user_view_model.dart';
+import 'package:minutodoaprendizado/pages/Inicio_page/inicio_page.dart';
+import 'package:minutodoaprendizado/pages/chat_page/chat_page.dart';
 import 'package:minutodoaprendizado/pages/config_page/config_page.dart';
 import 'package:minutodoaprendizado/pages/home_page/home_page.dart';
 import 'package:minutodoaprendizado/pages/login_page/login_email_password/login_email_password.dart';
 import 'package:minutodoaprendizado/pages/login_page/login_page.dart';
+import 'package:minutodoaprendizado/pages/media_page/media_page.dart';
 import 'package:minutodoaprendizado/pages/welcome_page/welcome_page.dart';
 
 void main() {
@@ -32,7 +35,10 @@ class MinutoDoAprendizado extends StatelessWidget {
         HomePage.id: (context) => HomePage(),
         ConfigPage.id: (context) => ConfigPage(),
         LoginPage.id: (context) => LoginPage(),
-        LoginEmailPassword.id: (context) => LoginEmailPassword()
+        LoginEmailPassword.id: (context) => LoginEmailPassword(),
+        InicioPage.id: (context) => InicioPage(),
+        MediaPage.id: (context) => MediaPage(),
+        ChatPage.id: (context) => ChatPage(),
       },
     );
   }

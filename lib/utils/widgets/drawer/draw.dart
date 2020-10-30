@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:minutodoaprendizado/core/view_model/user_view_model/user_view_model.dart';
+import 'package:minutodoaprendizado/pages/Inicio_page/inicio_page.dart';
 
 import 'package:minutodoaprendizado/utils/theme/themes.dart';
 import 'package:minutodoaprendizado/utils/widgets/flatButton/FlatButtonModify.dart';
@@ -27,7 +28,7 @@ class _DrawState extends State<Draw> {
             child: ListView(
               children: <Widget>[
                 Container(
-                  height: 230,
+                  height: 170,
                   width: double.infinity,
                   color: Colors.white,
                   child: Padding(
@@ -60,22 +61,16 @@ class _DrawState extends State<Draw> {
                 Container(
                   padding: EdgeInsets.all(10.0),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       FlatButtonModify(
-                        title: 'Início',
-                        onTap: () {},
+                        title: 'Seu desempenho',
+                        onTap: () {
+                          print('DIRECIONADO PARA A TELA DE DESEMPENHO');
+                        },
                       ),
                       FlatButtonModify(
-                        title: 'Conta',
-                        onTap: () {},
-                      ),
-                      FlatButtonModify(
-                        title: 'Home',
-                        onTap: () {},
-                      ),
-                      FlatButtonModify(
-                        title: 'Home',
+                        title: 'Configurações',
                         onTap: () {},
                       ),
                     ],
