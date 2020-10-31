@@ -24,10 +24,40 @@ mixin _$UserViewModel on _UserViewModelBase, Store {
     });
   }
 
+  final _$randomAtom = Atom(name: '_UserViewModelBase.random');
+
+  @override
+  Random get random {
+    _$randomAtom.reportRead();
+    return super.random;
+  }
+
+  @override
+  set random(Random value) {
+    _$randomAtom.reportWrite(value, super.random, () {
+      super.random = value;
+    });
+  }
+
+  final _$_UserViewModelBaseActionController =
+      ActionController(name: '_UserViewModelBase');
+
+  @override
+  void selectNumber() {
+    final _$actionInfo = _$_UserViewModelBaseActionController.startAction(
+        name: '_UserViewModelBase.selectNumber');
+    try {
+      return super.selectNumber();
+    } finally {
+      _$_UserViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
-name: ${name}
+name: ${name},
+random: ${random}
     ''';
   }
 }

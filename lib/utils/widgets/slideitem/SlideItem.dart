@@ -29,7 +29,7 @@ class SlideItem extends StatelessWidget {
         ),
         Text(
           slideList[index].title,
-          style:style3,
+          style: appTheme.textTheme.headline1,
         ),
         SizedBox(
           height: 10,
@@ -37,6 +37,7 @@ class SlideItem extends StatelessWidget {
         Text(
           slideList[index].description,
           textAlign: TextAlign.center,
+          
         ),
       ],
     );

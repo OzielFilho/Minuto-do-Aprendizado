@@ -1,10 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:minutodoaprendizado/app/modules/pages/auth/cadastro_page/cadastro_email_password.dart';
+import 'package:minutodoaprendizado/app/modules/pages/auth/login_page/login_page.dart';
 
-import 'package:minutodoaprendizado/pages/login_page/login_page.dart';
 import 'package:minutodoaprendizado/utils/listUtils/sliderList.dart';
-import 'package:minutodoaprendizado/utils/theme/themes.dart';
+
 import 'package:minutodoaprendizado/utils/widgets/slidedots/SlideDots.dart';
 import 'package:minutodoaprendizado/utils/widgets/slideitem/SlideItem.dart';
 
@@ -99,13 +100,13 @@ class _WelcomePageState extends State<WelcomePage> {
                   FlatButton(
                       child: Text(
                         'Vamos iniciar!',
-                        style: style2,
+                        style: Theme.of(context).textTheme.button,
                       ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5),
                       ),
                       padding: const EdgeInsets.all(15),
-                      color: Color(0xffdb9d16),
+                      color: Theme.of(context).primaryColor,
                       textColor: Colors.white,
                       onPressed: () =>
                           //Navegaçao pora o login
@@ -116,10 +117,12 @@ class _WelcomePageState extends State<WelcomePage> {
                       FlatButton(
                         child: Text(
                           'Clique aqui se não possui conta',
-                          style: style1,
+                          style: Theme.of(context).textTheme.subtitle1,
                         ),
                         onPressed: () {
                           //Navegação para o cadastro
+                          Navigator.pushNamed(
+                              context, CadastroEmailPasswordPage.id);
                         },
                       ),
                     ],

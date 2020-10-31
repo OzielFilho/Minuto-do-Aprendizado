@@ -35,7 +35,7 @@ class MediaWidget extends StatelessWidget {
                     child: Icon(
                       FlutterIcons.play_arrow_mdi,
                       size: 100,
-                      color: colorPrimary,
+                      color: Theme.of(context).primaryColor,
                     ),
                   ),
                 ),

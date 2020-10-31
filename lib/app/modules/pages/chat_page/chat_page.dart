@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:minutodoaprendizado/utils/listUtils/personList.dart';
 import 'package:minutodoaprendizado/utils/theme/themes.dart';
 
 class ChatPage extends StatefulWidget {
@@ -8,6 +11,7 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
+  final Random random = Random();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,11 +25,14 @@ class _ChatPageState extends State<ChatPage> {
               children: [
                 Text(
                   'Professores disponíveis',
-                  style: style1,
+                  style: Theme.of(context).textTheme.headline3,
+                ),
+                SizedBox(
+                  height: 5,
                 ),
                 Container(
-                  height: 1,
-                  color: colorPrimary,
+                  height: 2,
+                  color: Theme.of(context).primaryColor,
                 ),
                 SizedBox(
                   height: 15,
@@ -49,12 +56,13 @@ class _ChatPageState extends State<ChatPage> {
                     child: Column(
                       children: [
                         CircleAvatar(
-                          minRadius: 25,
-                          backgroundColor: Colors.transparent,
-                          backgroundImage: AssetImage(
-                            'assets/images/logo.png',
-                          ),
-                        ),
+                            minRadius: 25,
+                            backgroundColor: Colors.transparent,
+                            backgroundImage: random != null
+                                ? NetworkImage(
+                                    personList[random.nextInt(4)],
+                                  )
+                                : Container()),
                         SizedBox(
                           width: 20,
                         ),
@@ -72,11 +80,14 @@ class _ChatPageState extends State<ChatPage> {
               children: [
                 Text(
                   'Conversas',
-                  style: style1,
+                  style: Theme.of(context).textTheme.headline3,
+                ),
+                SizedBox(
+                  height: 5,
                 ),
                 Container(
-                  height: 1,
-                  color: colorPrimary,
+                  height: 2,
+                  color: Theme.of(context).primaryColor,
                 ),
                 SizedBox(
                   height: 15,
@@ -110,8 +121,12 @@ class _ChatPageState extends State<ChatPage> {
                               CircleAvatar(
                                 backgroundColor: Colors.transparent,
                                 backgroundImage:
-                                    AssetImage('assets/images/logo.png'),
-                              ),
+                                    random != null
+                                ? NetworkImage(
+                                    personList[random.nextInt(4)],
+                                  )
+                                : Container()),
+                              
                               SizedBox(
                                 width: 20,
                               ),

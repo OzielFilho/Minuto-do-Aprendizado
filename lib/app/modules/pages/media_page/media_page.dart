@@ -25,11 +25,14 @@ class _MediaPageState extends State<MediaPage> {
               children: [
                 Text(
                   'Conteúdo Digital',
-                  style: style1,
+                  style: Theme.of(context).textTheme.headline3,
+                ),
+                 SizedBox(
+                  height: 5,
                 ),
                 Container(
-                  height: 1,
-                  color: colorPrimary,
+                  height: 2,
+                  color: Theme.of(context).primaryColor,
                 ),
                 SizedBox(
                   height: 15,

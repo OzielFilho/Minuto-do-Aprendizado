@@ -43,7 +43,7 @@ class RoundedTextField extends StatelessWidget {
       autocorrect: true,
       obscureText: obscureText,
       cursorColor: Colors.white,
-      style: style2,
+      style: Theme.of(context).textTheme.bodyText2,
       decoration: InputDecoration(
         contentPadding: padding,
         suffixIcon: icon != null
@@ -61,10 +61,10 @@ class RoundedTextField extends StatelessWidget {
               )
             : null,
         filled: true,
-        fillColor: colorPrimary,
+        fillColor: Theme.of(context).primaryColor,
         hintMaxLines: 1,
         hintText: hintText,
-        hintStyle: style2,
+        hintStyle: Theme.of(context).textTheme.button,
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.all(Radius.circular(5.0)),

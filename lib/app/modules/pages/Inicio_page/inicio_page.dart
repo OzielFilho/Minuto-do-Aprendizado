@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:minutodoaprendizado/core/model/media/Media.dart';
 import 'package:minutodoaprendizado/utils/listUtils/categList.dart';
-import 'package:minutodoaprendizado/utils/theme/themes.dart';
+import 'package:minutodoaprendizado/utils/widgets/MediaWidget/media_widget.dart';
+
 import 'package:minutodoaprendizado/utils/widgets/RoundedTextField/RoundedTextField.dart';
 import 'package:minutodoaprendizado/utils/widgets/flatButton/FlatButtonModify.dart';
 
@@ -26,11 +28,14 @@ class _InicioPageState extends State<InicioPage> {
               children: [
                 Text(
                   'Categorias',
-                  style: style1,
+                  style: Theme.of(context).textTheme.headline3,
+                ),
+                SizedBox(
+                  height: 5,
                 ),
                 Container(
-                  height: 1,
-                  color: colorPrimary,
+                  height: 2,
+                  color: Theme.of(context).primaryColor,
                 ),
                 SizedBox(
                   height: 15,
@@ -47,7 +52,7 @@ class _InicioPageState extends State<InicioPage> {
               itemBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: FlatButtonModify(
-                  color: colorPrimary,
+                  color: Theme.of(context).primaryColor,
                   title: categoList[index],
                   onTap: () {},
                 ),
@@ -62,12 +67,15 @@ class _InicioPageState extends State<InicioPage> {
             child: Column(
               children: [
                 Text(
-                  'Faça a pesquisa do conteúdo',
-                  style: style1,
+                  'Pesquise o conteúdo',
+                  style: Theme.of(context).textTheme.headline3,
+                ),
+                SizedBox(
+                  height: 5,
                 ),
                 Container(
-                  height: 1,
-                  color: colorPrimary,
+                  height: 2,
+                  color: Theme.of(context).primaryColor,
                 ),
                 SizedBox(
                   height: 15,
@@ -79,10 +87,34 @@ class _InicioPageState extends State<InicioPage> {
             textController: _searchTextController,
             hintText: 'Buscar músicas, artistas ou álbuns',
             icon: Icon(FlutterIcons.search_mdi),
-            
             onChanged: () {},
             onIconTap: () {},
           ),
+          GridView.builder(
+            padding: const EdgeInsets.only(
+              left: 16.0,
+              top: 16.0,
+              right: 16.0,
+            ),
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 0.5,
+              mainAxisSpacing: 0.5,
+              childAspectRatio: 0.7,
+            ),
+            itemCount: mediaList.length,
+            itemBuilder: (context, index) {
+              return MediaWidget(
+                index: index,
+                media: mediaList[index],
+              );
+            },
+          ),
+          SizedBox(
+            height: 70,
+          )
         ],
       ),
     );

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
+import 'package:minutodoaprendizado/app/modules/pages/welcome_page/welcome_page.dart';
 import 'package:minutodoaprendizado/core/view_model/user_view_model/user_view_model.dart';
-import 'package:minutodoaprendizado/pages/Inicio_page/inicio_page.dart';
 
 import 'package:minutodoaprendizado/utils/theme/themes.dart';
 import 'package:minutodoaprendizado/utils/widgets/flatButton/FlatButtonModify.dart';
@@ -14,7 +14,7 @@ class Draw extends StatefulWidget {
 
 class _DrawState extends State<Draw> {
   String urlImage =
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/1200px-User_font_awesome.svg.png';
+      'https://news-cdn.softpedia.com/images/news2/What-039-s-Written-on-Bill-Gates-039-Face-Positive-73-Negative-27-2.jpg';
 
   var _userViewModel = GetIt.I.get<UserViewModel>();
 
@@ -24,7 +24,7 @@ class _DrawState extends State<Draw> {
       child: Observer(
         builder: (_) {
           return Container(
-            color: colorPrimary,
+            color: Theme.of(context).primaryColor,
             child: ListView(
               children: <Widget>[
                 Container(
@@ -32,11 +32,11 @@ class _DrawState extends State<Draw> {
                   width: double.infinity,
                   color: Colors.white,
                   child: Padding(
-                    padding: const EdgeInsets.all(21.0),
+                    padding: const EdgeInsets.all(17.0),
                     child: Row(
                       children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 15.0),
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
                           child: Container(
                             height: 80.0,
                             width: 80.0,
@@ -52,16 +52,15 @@ class _DrawState extends State<Draw> {
                         ),
                         Text(
                           _userViewModel?.name ?? 'Carregando',
-                          style: style1,
+                          style: Theme.of(context).textTheme.headline1,
                         ),
                       ],
                     ),
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.all(10.0),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       FlatButtonModify(
                         title: 'Seu desempenho',
@@ -78,15 +77,16 @@ class _DrawState extends State<Draw> {
                 ),
                 Container(
                   height: 230,
-                  width: double.infinity,
-                  padding: EdgeInsets.all(10.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       FlatButtonModify(
                         title: 'Sair',
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushReplacementNamed(
+                              context, WelcomePage.id);
+                        },
                       ),
                     ],
                   ),

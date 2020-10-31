@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:minutodoaprendizado/pages/home_page/home_page.dart';
+import 'package:minutodoaprendizado/app/modules/pages/home_page/home_page.dart';
+
 import 'package:minutodoaprendizado/utils/theme/themes.dart';
 
 class BottomNavigator extends StatefulWidget {
@@ -20,12 +21,12 @@ class _BottomNavigatorState extends State<BottomNavigator> {
       body: _tabs[_currentIndex],
       
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: colorPrimary,
+        backgroundColor: Theme.of(context).primaryColor,
         elevation: 0.0,
         selectedItemColor: Colors.white,
-        selectedLabelStyle: style1,
+        selectedLabelStyle: Theme.of(context).textTheme.bodyText1,
         unselectedItemColor: Color(0xFF757575),
-        unselectedLabelStyle:style1,
+        unselectedLabelStyle:Theme.of(context).textTheme.bodyText1,
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
         onTap: (index) {

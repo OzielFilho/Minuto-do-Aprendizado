@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:minutodoaprendizado/pages/Inicio_page/inicio_page.dart';
-import 'package:minutodoaprendizado/pages/chat_page/chat_page.dart';
+import 'package:minutodoaprendizado/app/modules/pages/Inicio_page/inicio_page.dart';
+import 'package:minutodoaprendizado/app/modules/pages/chat_page/chat_page.dart';
+import 'package:minutodoaprendizado/app/modules/pages/media_page/media_page.dart';
 
-import 'package:minutodoaprendizado/pages/media_page/media_page.dart';
 
 import 'package:minutodoaprendizado/utils/theme/themes.dart';
 import 'package:minutodoaprendizado/utils/widgets/drawer/draw.dart';
@@ -40,29 +40,29 @@ class _HomePageState extends State<HomePage>
         child: TabBar(
           controller: _tabController,
           indicatorSize: TabBarIndicatorSize.label,
-          indicatorColor: colorPrimary,
+          indicatorColor: Theme.of(context).primaryColor,
           tabs: <Widget>[
             Tab(
-              icon: Icon(FlutterIcons.home_mdi, color: colorPrimary),
+              icon: Icon(FlutterIcons.home_mdi, color: Theme.of(context).primaryColor),
               child: Text(
                 'inicio',
-                style: style1,
+                style: Theme.of(context).textTheme.subtitle1,
               ),
             ),
             Tab(
-              icon: Icon(FlutterIcons.photo_album_mdi, color: colorPrimary),
+              icon: Icon(FlutterIcons.photo_album_mdi, color: Theme.of(context).primaryColor),
               //text: 'Inicio',
               child: Text(
                 'Midia',
-                style: style1,
+                style: Theme.of(context).textTheme.subtitle1,
               ),
             ),
             Tab(
-              icon: Icon(FlutterIcons.chat_mco, color: colorPrimary),
+              icon: Icon(FlutterIcons.chat_mco, color: Theme.of(context).primaryColor),
               //text: 'Inicio',
               child: Text(
                 'Chat',
-                style: style1,
+                style: Theme.of(context).textTheme.subtitle1,
               ),
             ),
           ],
@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage>
       ),
       appBar: AppBar(
         title: null,
-        backgroundColor: colorPrimary,
+        backgroundColor: Theme.of(context).primaryColor,
       ),
       drawer: Draw(),
       body: TabBarView(

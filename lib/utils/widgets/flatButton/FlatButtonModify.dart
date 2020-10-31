@@ -26,7 +26,7 @@ class FlatButtonModify extends StatelessWidget {
       color: color,
       child: Text(
         title,
-        style: style2,
+        style: Theme.of(context).textTheme.button,
       ),
     );
   }
